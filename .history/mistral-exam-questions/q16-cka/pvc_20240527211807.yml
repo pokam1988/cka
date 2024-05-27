@@ -1,0 +1,13 @@
+# pvc.yml
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-volume
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Mi
+  storageClassName: csi-hostpath-sc

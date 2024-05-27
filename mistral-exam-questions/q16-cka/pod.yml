@@ -1,0 +1,16 @@
+# pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-server
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - mountPath: /usr/share/nginx/html
+      name: html-volume
+  volumes:
+  - name: html-volume
+    persistentVolumeClaim:
+      claimName: pv-volume
