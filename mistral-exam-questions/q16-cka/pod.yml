@@ -4,13 +4,20 @@ kind: Pod
 metadata:
   name: web-server
 spec:
-  containers:
-  - name: nginx
-    image: nginx
-    volumeMounts:
-    - mountPath: /usr/share/nginx/html
-      name: html-volume
   volumes:
-  - name: html-volume
-    persistentVolumeClaim:
-      claimName: pv-volume
+    - name: html-volume
+      persistentVolumeClaim:
+        claimName: pv-volume
+  containers:
+    - name: nginx
+      image: nginx
+      volumeMounts:
+      - mountPath: /usr/share/nginx/html
+        name: html-volume
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "250m"
+        limits:
+          memory: "128Mi"
+          cpu: "500m"

@@ -5,18 +5,18 @@ Sure! Let's go through the steps to achieve the task using Kubernetes. We'll fir
 First, create a YAML file for the PersistentVolumeClaim:
 
 ```yaml
-# pvc.yaml
+# pvc.yml
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pv-volume
 spec:
+  storageClassName: csi-hostpath-sc
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 10Mi
-  storageClassName: csi-hostpath-sc
 ```
 
 Apply this configuration using `kubectl`:
